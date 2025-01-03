@@ -1,0 +1,153 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!-- padding-left: 10px; padding-right: 10px; -->
+<head>
+	<link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
+	<link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:500|Work+Sans:900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@900&display=swap" rel="stylesheet">
+	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+	<script type="text/javascript" src="animations.js"></script>
+<style>
+</style>
+</head>
+<body onload="draw_key();">
+
+<div id="key"></div>
+
+<div class="links2">
+	<a href="javascript:set_key('A', 'W');">A</a> 
+	<a href="javascript:set_key('B', 'L');">B</a> 
+	<a href="javascript:set_key('c', 'V');">c</a> 
+	<a href="javascript:set_key('D', 'N');">D</a> 
+	<a href="javascript:set_key('d', 'O');">d</a> 
+	<a href="javascript:set_key('E', 'E');">E</a> 
+	<a href="javascript:set_key('e', 'C');">e</a> 
+	<a href="javascript:set_key('F', 'S');">F</a> 
+	<a href="javascript:set_key('f', 'D');">f</a> 
+	<a href="javascript:set_key('G', 'A');">G</a> 
+	<a href="javascript:set_key('H', 'T');">H</a> 
+	<a href="javascript:set_key('I', 'T');">I</a> 
+	<a href="javascript:set_key('!', 'O');">!</a> 
+	<a href="javascript:set_key('J', 'F');">J</a> 
+	<a href="javascript:set_key('j', 'X');">j</a> 
+	<a href="javascript:set_key('K', 'S');">K</a> 
+	<a href="javascript:set_key('k', 'I');">k</a> 
+	<a href="javascript:set_key('=', 'P');">=</a> 
+	<a href="javascript:set_key('L', 'T');">L</a> 
+	<a href="javascript:set_key('l', 'A');">l</a> 
+	<a href="javascript:set_key('M', 'H');">M</a> 
+	<a href="javascript:set_key('N', 'E');">N</a> 
+	<a href="javascript:set_key('O', 'N');">O</a> 
+	<a href="javascript:set_key('P', 'I');">P</a> 
+	<a href="javascript:set_key('p', 'E');">p</a> 
+	<a href="javascript:set_key('Q', 'F');">Q</a> 
+	<a href="javascript:set_key('q', 'M');">q</a> 
+	<a href="javascript:set_key('R', 'G');">R</a> 
+	<a href="javascript:set_key('r', 'R');">r</a> 
+	<a href="javascript:set_key('S', 'A');">S</a> 
+	<a href="javascript:set_key('T', 'O');">T</a> 
+	<a href="javascript:set_key('t', 'R');">t</a> 
+	<a href="javascript:set_key('U', 'I');">U</a> 
+	<a href="javascript:set_key('V', 'B');">V</a> 
+	<a href="javascript:set_key('W', 'E');">W</a> 
+	<a href="javascript:set_key('X', 'O');">X</a> 
+	<a href="javascript:set_key('Y', 'U');">Y</a> 
+	<a href="javascript:set_key('Z', 'E');">Z</a> 
+
+	<a href="javascript:set_key('_', 'Y');">_</a> 
+	<a href="javascript:set_key('@', 'S');">@</a> 
+	<a href="javascript:set_key('%', 'L');">%</a> 
+	<a href="javascript:set_key('#', 'L');">#</a> 
+
+	<a href="javascript:set_key('6', 'E');">6</a> 
+	<a href="javascript:set_key('5', 'T');">5</a> 
+
+	<a href="javascript:set_key('9', 'I');">9</a> 
+	<a href="javascript:set_key('7', 'S');">7</a> 
+	<a href="javascript:set_key('8', 'A');">8</a> 
+	<a href="javascript:set_key('^', 'N');">^</a> 
+	<a href="javascript:set_key('/', 'K');">/</a> 
+	<a href="javascript:set_key('\\', 'R');">\</a> 
+
+	<a href="javascript:set_key('z', 'D');">z</a> 
+	<a href="javascript:set_key('(', 'N');">(</a> 
+	<a href="javascript:set_key(')', 'H');">)</a> 
+	<a href="javascript:set_key('+', 'E');">+</a> <br><br>
+
+	<div class="link-header">Script order:</div><br><br>
+
+	<a href="javascript:set_key('/', 'K');">/</a> 
+	<a href="javascript:set_key('A', 'K');">A</a> 
+	<a href="javascript:set_key('9', 'I');">9</a> 
+	<a href="javascript:set_key('P', 'I');">P</a> 
+	<a href="javascript:set_key('%', 'L');">%</a> 
+	<a href="javascript:set_key('#', 'L');">#</a> 
+	<a href="javascript:set_key('B', 'L');">B</a> 
+	<a href="javascript:set_key('Z', 'E');">Z</a> 
+	<a href="javascript:set_key('U', 'I');">U</a> 
+	<a href="javascript:set_key('k', 'I');">k</a> 
+	<a href="javascript:set_key('O', 'N');">O</a> 
+	<a href="javascript:set_key('R', 'G');">R</a> 
+	<a href="javascript:reset_key('A');">reset A</a> 
+	<a href="javascript:set_key('A', 'W');">A</a> 
+	<a href="javascript:set_key('f', 'R');">f</a> 
+	<a href="javascript:reset_key('f');">reset f</a> 
+	<a href="javascript:set_key('f', 'D');">f</a> 
+	<a href="javascript:set_key('l', 'A');">l</a> 
+	<a href="javascript:set_key('q', 'M');">q</a> 
+	<a href="javascript:set_key('E', 'E');">E</a> 
+	<a href="javascript:set_key('^', 'N');">^</a> 
+	<a href="javascript:set_key('I', 'T');">I</a> 
+	<a href="javascript:set_key('L', 'T');">L</a> 
+	<a href="javascript:set_key('M', 'H');">M</a> 
+	<a href="javascript:set_key('H', 'T');">H</a> 
+	<a href="javascript:set_key('@', 'S');">@</a> 
+	<a href="javascript:set_key('X', 'O');">X</a> 
+	<a href="javascript:set_key('T', 'O');">T</a> 
+	<a href="javascript:set_key('5', 'W');">5</a> 
+	<a href="javascript:reset_key('5');">reset 5</a> 
+	<a href="javascript:set_key('5', 'T');">5</a> 
+	<a href="javascript:set_key('=', 'P');">=</a> 
+	<a href="javascript:set_key('p', 'E');">p</a> 
+	<a href="javascript:set_key('W', 'E');">W</a> 
+	<a href="javascript:set_key('d', 'O');">d</a> 
+	<a href="javascript:set_key('V', 'B');">V</a> 
+	<a href="javascript:set_key('c', 'F');">c</a> 
+	<a href="javascript:set_key('+', 'T');">+</a> 
+	<a href="javascript:reset_key('c');">reset c</a> 
+	<a href="javascript:reset_key('+');">reset +</a> 
+	<a href="javascript:set_key('c', 'V');">c</a> 
+	<a href="javascript:set_key('+', 'E');">+</a> 
+	<a href="javascript:set_key('t', 'R');">t</a> 
+	<a href="javascript:set_key(')', 'H');">)</a> 
+	<a href="javascript:set_key('8', 'A');">8</a> 
+	<a href="javascript:set_key('\\', 'R');">\</a> 
+	<a href="javascript:set_key('S', 'A');">S</a> 
+	<a href="javascript:set_key('_', 'Y');">_</a> 
+	<a href="javascript:set_key('Y', 'U');">Y</a> 
+	<a href="javascript:set_key('e', 'C');">e</a> 
+	<a href="javascript:set_key('G', 'A');">G</a> 
+	<a href="javascript:set_key('K', 'S');">K</a> 
+	<a href="javascript:set_key('F', 'S');">F</a> 
+	<a href="javascript:set_key('6', 'E');">6</a> 
+	<a href="javascript:set_key('!', 'O');">!</a> 
+	<a href="javascript:set_key('D', 'N');">D</a> 
+	<a href="javascript:set_key('r', 'R');">r</a> 
+	<a href="javascript:set_key('N', 'E');">N</a> 
+	<a href="javascript:set_key('Q', 'F');">Q</a> 
+	<a href="javascript:set_key('J', 'F');">J</a> 
+	<a href="javascript:set_key('7', 'S');">7</a> 
+	<a href="javascript:set_key('(', 'N');">(</a> 
+	<a href="javascript:set_key('z', 'D');">z</a> 
+	<a href="javascript:set_key('j', 'X');">j</a> 
+
+	<br><br>
+
+
+	<br><br>
+
+
+</div>
+
+</body>
+</html>

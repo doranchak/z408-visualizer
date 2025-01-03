@@ -111,6 +111,95 @@ function drawCipher(cipher, width, szx, szy, sx, sy, gapx, gapy, id, color, draw
 	
 }
 
+var groups = [
+	"ABcDdEeFfGHI!JjKk=LlMNOPpQqRrSTtUVWXYZ",
+	"_@%#",
+	"65", 
+	"978^/\\",
+	"z()+"
+];
+
+function dump_key() {
+	for (var i=0; i<groups.length; i++) {
+		for (var j=0; j<groups[i].length; j++) {
+			for (var k=0; k<ciphers[0].length; k++) {
+				if (ciphers[0][k] == groups[i][j]) {
+					console.log("set_key('" + ciphers[0][k] + "', '" + ciphers[1][k] + "');");
+					break;
+				}
+			}
+		}
+	}
+}
+
+function draw_key() {
+
+	// symbol groupings:
+	//
+	// 		ABcDdEeFfGHI!JjKk=LlMNOPpQqRrSTtUVWXYZ
+	//              _@%#  65  978^/\  z()+
+	// 
+
+	startx = 40;
+	starty = 40;
+	sizex = 21;
+	sizey = 21;
+	var z = 0;
+	var html = "";
+
+	var col;
+	for (var i=0; i<groups.length; i++) {
+		var row = i == 0 ? 0 : 3;
+		if (i == 1) col = 8;
+		for (var j=0; j<groups[i].length; j++) {
+			z--;
+			if (i == 0) col = j;
+			var rc = i + "_" + j;
+			var left = (col+1)*2 + col*sizex + startx; // gaps + symbols + starting offset
+			var top = (row+1)*2 + row*sizey + starty; // gaps + symbols + starting offset
+			html += "<span id=\"c_" + rc + "\" class=\"c\" style=\"position: absolute; left: " + left + "px; top: " + top + "px; font-size: " + (sizex+10) + "px; padding: 1px 3px 1px 2px; z-index: " + z + "\">" + groups[i][j] + "</span>";
+			html += "<span id=\"p_" + rc + "\" class=\"u\" style=\"position: absolute; left: " + left + "px; top: " + (top+2 + sizey) + "px; font-size: " + (sizex+10) + "px; padding: 1px 3px 1px 2px; z-index: " + z + "\">?</span>";
+			if (i > 0) col++;
+		}
+		if (i > 0) col = col + 2;
+	}
+
+	document.getElementById("key").innerHTML = html;
+}
+
+function set_key(c, p) {
+	rc = group_ij_for(c);
+	var elem_c = document.getElementById("c_" + rc[0] + "_" + rc[1]);
+	elem_c.style.backgroundColor = orange;
+	elem_c.style.transform = "scale(1.5)";
+	elem_c.style.opacity = "0.75";
+	setTimeout(function() {
+		elem_c.style.backgroundColor = "";
+		elem_c.style.transform = "";
+		elem_c.style.opacity = "";
+		var elem_p = document.getElementById("p_" + rc[0] + "_" + rc[1]);
+		elem_p.innerHTML = p;
+		elem_p.className = "pt-animated";
+	}, 1000);
+
+}
+
+function reset_key(c) {
+	rc = group_ij_for(c);
+	var elem_p = document.getElementById("p_" + rc[0] + "_" + rc[1]);
+	elem_p.innerHTML = "?";
+	elem_p.className = "u";
+}
+
+function group_ij_for(c) {
+	var col;
+	for (var i=0; i<groups.length; i++) {
+		for (var j=0; j<groups[i].length; j++) {
+			if (groups[i][j] == c) return [i, j];
+		}
+	}
+}
+
 function resetCell(row, col) {
 	var y_offset = 40;
 	if (row > 7) y_offset += 40;

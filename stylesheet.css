@@ -14,6 +14,12 @@ center {
 .links {
 	position: absolute; left: 600px;
 }
+.links2 {
+	position: absolute; top: 220px; left: 100px;
+}
+.link-header {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;	
+}
 .svg-container { z-index: -10000; }
 .h {
 	font-family: 'work sans';
@@ -25,7 +31,6 @@ hr {position: absolute; top: -10px; }
 .pt {
 	font-family: 'Source Code Pro', monospace;
 	font-weight: bold;
-#	text-align: center;
 	font-size: 23pt;   
 	color: #090;
 	position: relative;
@@ -165,14 +170,25 @@ hr {position: absolute; top: -10px; }
     background-color: yellow;
     animation: scale-down-ct 500ms ease-out forwards;
 }
+.u {
+	font-family: 'Source Code Pro', monospace;
+	font-weight: bold;
+	font-size: 23pt;   
+	color: #ccc;
+	position: relative;
+	top: -4px;
+}                      
+
 
   @keyframes scale-down-pt {
     from {
+	  z-index: 10;
       transform: scale(4, 4);
       opacity: 0.5;
     }
     to {
-      transform: scale(1, 1);
+		z-index: -10;
+		transform: scale(1, 1);
       opacity: 1;
     }
   }
